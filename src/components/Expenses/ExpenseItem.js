@@ -11,13 +11,23 @@ const ExpenseItem = (props) => {
   const day = expenseDate.toLocaleString("en-US", { day: "2-digit" });
   const year = expenseDate.getFullYear();
 
+  const [title, setTitle] = React.useState(expenseTitle);
+
+  const clickHandler = () => {
+    setTitle("Macbook Pro");
+  };
+
+
   return (
     <Card className="expense-item">
       <ExpenseDate month={month} day={day} year={year} />
       <div className="expense-item__description">
-        <h2>{expenseTitle}</h2>
+        <h2>{title}</h2>
         <div className="expense-item__price">${expenseAmount}</div>
       </div>
+      <button onClick={clickHandler}>
+        Change Title
+      </button>
     </Card>
   );
 };
